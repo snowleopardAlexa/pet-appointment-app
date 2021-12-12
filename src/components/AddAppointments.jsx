@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import {Input, Card, FormGroup, Label, Button, Form } from 'reactstrap';
-
-import { PlusCircleFilled } from '@ant-design/icons';
-import { CloseCircleFilled } from '@ant-design/icons';
-
+import {Input, Card, CardBody, FormGroup, Label, Button, Form } from 'reactstrap';
+import { AiFillCloseCircle, AiFillPlusCircle } from "react-icons/bs";
 //import { useLocalStorage } from "./useLocalStorage";
 
 
@@ -35,16 +32,15 @@ function AddApointments() {
         <div>
            <Card>
              <p style={{fontSize: '1.2rem'}}>Add Appointment</p>
-             <PlusCircleFilled 
+             <AiFillPlusCircle
                style={{color: '#1890ff', fontSize: '30px'}} 
                onClick={onClick}
              />
             {showForm ? 
-                <Card style={{marginTop: '30px'}}>    
-                <Card bordered={false}>
-                <CloseCircleFilled style={{color: '#f5222d', fontSize: '25px', float: 'right'}}  />
-                </Card>
-               <Form inline onSubmit={handleFillAppointmentForm}>
+            <Card style={{marginTop: '30px'}}>    
+              <CardBody>
+              <AiFillCloseCircle style={{color: '#f5222d', fontSize: '25px', float: 'right'}}  />
+              <Form inline onSubmit={handleFillAppointmentForm}>
                <FormGroup>
                  <Label for="exampleEmail" hidden></Label>
                  <Input
@@ -66,11 +62,9 @@ function AddApointments() {
                  onChange={e => setBreed(e.target.value)}
                 />
               </FormGroup>
-             <Button>
-              Submit
-             </Button>
+             <Button>Submit</Button>
              </Form>
-
+              </CardBody>       
             </Card>
                : null} 
            </Card> 
