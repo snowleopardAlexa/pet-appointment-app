@@ -82,6 +82,61 @@ function AddApointments() {
                   >
                  <Input />
                  </Form.Item>
+
+                 <Form.Item
+                 name={['user', 'name']}
+                 label="Owner"
+                 rules={[
+                  {
+                    required: true
+                  },
+                 ]}
+                >
+                <Input />
+                </Form.Item>
+
+                 <Form.Item label="DatePicker">
+                 <DatePicker 
+                   name={['date']}
+                   rules={[
+                    {
+                      required: true
+                    },
+                  ]}
+                 />
+                </Form.Item>
+        
+                <Form.Item
+                 name={['user', 'email']}
+                 label="Email"
+                 rules={[
+                  {
+                    type: 'email',
+                    required: true
+                  },
+                ]}
+                >
+                <Input />
+                </Form.Item>
+        
+                <Form.Item
+                name="phone"
+                label="Phone Number"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input your phone number!',
+                  },
+                ]}
+              >
+                <Input
+                  //addonBefore={prefixSelector}
+                  style={{
+                    width: '100%',
+                  }}
+                />
+              </Form.Item>
+
                  <Form.Item
                   value="petType"
                   onChange={(e) => setPetType(e.target.value)}
@@ -95,6 +150,7 @@ function AddApointments() {
                 >
                 <Input />
                </Form.Item>
+
                <Form.Item
         
                 name={['breed']}
@@ -139,60 +195,6 @@ function AddApointments() {
                 >
                 <InputNumber />
                 </Form.Item>
-        
-                <Form.Item label="DatePicker">
-                 <DatePicker 
-                   name={['date']}
-                   rules={[
-                    {
-                      required: true
-                    },
-                  ]}
-                 />
-                </Form.Item>
-        
-                <Form.Item
-                 name={['user', 'name']}
-                 label="Owner"
-                 rules={[
-                  {
-                    required: true
-                  },
-                 ]}
-                >
-                <Input />
-                </Form.Item>
-        
-                <Form.Item
-                 name={['user', 'email']}
-                 label="Email"
-                 rules={[
-                  {
-                    type: 'email',
-                    required: true
-                  },
-                ]}
-                >
-                <Input />
-                </Form.Item>
-        
-                <Form.Item
-                name="phone"
-                label="Phone Number"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your phone number!',
-                  },
-                ]}
-              >
-                <Input
-                  //addonBefore={prefixSelector}
-                  style={{
-                    width: '100%',
-                  }}
-                />
-              </Form.Item>
         
                 <Form.Item name={['user', 'introduction']} label="Notes">
                 <Input.TextArea />
