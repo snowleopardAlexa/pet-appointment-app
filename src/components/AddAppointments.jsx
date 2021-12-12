@@ -24,11 +24,20 @@ function AddApointments() {
     // storing data in LS
     useEffect(() => {
         localStorage.setItem("petName", JSON.stringify(petName));
+        localStorage.setItem("owner", JSON.stringify(owner));
+        localStorage.setItem("datePicker", JSON.stringify(datePicker));
+        localStorage.setItem("email", JSON.stringify(email));
+        localStorage.setItem("phoneNumber", JSON.stringify(phoneNumber));
+
         localStorage.setItem("petType", JSON.stringify(petType));
         localStorage.setItem("breed", JSON.stringify(breed));
         localStorage.setItem("gender", JSON.stringify(gender));
+        localStorage.setItem("age", JSON.stringify(age));
+        localStorage.setItem("notes", JSON.stringify(notes));
 
-    }, [petName, petType, breed, gender])  
+    }, [petName, owner, datePicker, email, phoneNumber, petType, breed, gender, age, notes])  
+
+    
 
     // show form after clicking plus btn 
     const [ showForm, setShowForm ] = useState(false)
@@ -84,6 +93,8 @@ function AddApointments() {
                  </Form.Item>
 
                  <Form.Item
+                 value={owner}
+                 onChange={(e) => setOwner(e.target.value)}
                  name={['user', 'name']}
                  label="Owner"
                  rules={[
@@ -97,6 +108,8 @@ function AddApointments() {
 
                  <Form.Item label="DatePicker">
                  <DatePicker 
+                   value={datePicker}
+                   onChange={(e) => setDatePicker(e.target.value)}
                    name={['date']}
                    rules={[
                     {
@@ -107,6 +120,8 @@ function AddApointments() {
                 </Form.Item>
         
                 <Form.Item
+                 value={email}
+                 onChange={(e) => setEmail(e.target.value)}
                  name={['user', 'email']}
                  label="Email"
                  rules={[
@@ -120,6 +135,8 @@ function AddApointments() {
                 </Form.Item>
         
                 <Form.Item
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
                 name="phone"
                 label="Phone Number"
                 rules={[
@@ -152,7 +169,8 @@ function AddApointments() {
                </Form.Item>
 
                <Form.Item
-        
+                value="breed"
+                onChange={(e) => setBreed(e.target.value)}
                 name={['breed']}
                 label="Breed"
                 rules={[
@@ -166,6 +184,7 @@ function AddApointments() {
         
                <Form.Item
                 name="gender"
+                onChange={(e) => setGender(e.target.value)}
                 label="Gender"
                 rules={[
                   {
@@ -182,6 +201,8 @@ function AddApointments() {
               </Form.Item>
         
                 <Form.Item
+                 value="age"
+                 onChange={(e) => setAge(e.target.value)}
                  name={['age']}
                  label="Age"
                  rules={[
@@ -196,7 +217,10 @@ function AddApointments() {
                 <InputNumber />
                 </Form.Item>
         
-                <Form.Item name={['user', 'introduction']} label="Notes">
+                <Form.Item 
+                value="notes"
+                onChange={(e) => setNotes(e.target.value)}
+                name={['user', 'introduction']} label="Notes">
                 <Input.TextArea />
                 </Form.Item>
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
