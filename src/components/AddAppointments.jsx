@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card } from 'antd';
 import { PlusCircleFilled } from '@ant-design/icons';
-import EditAppointments from './EditAppointments';
+import FormAddAppointments from './FormAddAppointments';
 
 function AddApointments() {
 
@@ -16,7 +16,7 @@ function AddApointments() {
                style={{color: '#1890ff', fontSize: '30px'}} 
                onClick={onClick}
              />
-            {showForm ? <EditAppointments /> : null}
+            {showForm ? <FormAddAppointments /> : null}
            </Card>
         </div>
     )
