@@ -1,14 +1,21 @@
 import React from 'react';
 import { Card, Divider } from 'antd';
+import { useLocalStorage } from './useLocalStorage';
 
-function ListAppointments({ petName, petType, petBreed }) {
+function ListAppointments() {
     return (
-        <div className="show-appt">
-           <div className="site-page-header-ghost-wrapper">
-           </div>
+        <div className="list-appts">
            <Divider orientation="left">Appointments</Divider>
-           <Card className="pet-apt">
-             <p style={{fontSize: '1.2rem', backgroundColor: 'pink'}}>Pet's Name {petName}</p>
+           <ul>
+            {/*} {appts.map((appt) => (*/}
+            <Card 
+              className="pet-apt"
+            >
+
+            <li>
+             <p 
+        
+               style={{fontSize: '1.2rem', backgroundColor: 'pink'}}>Pet's Name </p>
              <p style={{fontSize: '1rem'}}>owner</p>
              <p style={{fontSize: '1rem'}}>date</p>
              <p style={{fontSize: '1rem'}}>email</p>
@@ -19,7 +26,11 @@ function ListAppointments({ petName, petType, petBreed }) {
              <p style={{fontSize: '1rem'}}>email</p>
              <p style={{fontSize: '1rem'}}>number</p>
              <p style={{fontSize: '1rem'}}>notes if present</p>*/}
+             </li>
+
            </Card>
+            
+          </ul>
       </div>
     )
 }

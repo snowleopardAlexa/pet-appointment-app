@@ -1,35 +1,37 @@
-import { useState, useEffect } from "react";
+import { Button, Card, FormGroup, InputGroup } from "@blueprintjs/core"
+import { useState } from "react"
 
-const Form1 = () => {
-  const [name, setName] = useState("");
-  const [author, setAuthor] = useState("");
+function Form() {
+  const [petName, setPetName] = useState("")
 
-  useEffect(() => {
-    // storing input name
-    localStorage.setItem("name", JSON.stringify(name));
-    localStorage.setItem("author", JSON.stringify(author));
-  }, [name, author]);
+  const handleFillAppointmentForm = e => {
+    e.preventDefault()
+    try {
+      window.localStorage.setItem("petName", JSON.stringify({ petName }))
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-
-
+  
   return (
-    <form>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Full name"
-        aria-label="fullname"
-      />
-       <input
-        type="text"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-        placeholder="Full name"
-        aria-label="fullname"
-      />
-    </form>
-  );
-};
+    <div>
+      <Card elevation="1">
+        <form onSubmit={handleFillAppointmentForm}>
+          <FormGroup label="Name" labelFor="name">
+            <InputGroup
+              id="Name"
+              placeholder="Name"
+              type="Name"
+              value={petName}
+              onChange={e => setPetName(e.target.value)}
+            />
+          </FormGroup>
+          <Button intent="primary" text="Submit" fill type="submit" />
+        </form>
+      </Card>
+    </div>
+  )
+}
 
-export default Form1;
+export default Form;
