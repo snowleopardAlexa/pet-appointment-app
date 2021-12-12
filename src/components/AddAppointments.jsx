@@ -3,7 +3,7 @@ import { Card, Form, Input, Button, InputNumber, Alert, Select, DatePicker } fro
 import { PlusCircleFilled } from '@ant-design/icons';
 import { CloseCircleFilled } from '@ant-design/icons';
 
-import { useLocalStorage } from '../useLocalStorage';
+import { useLocalStorage } from "./useLocalStorage";
 
 const { Option } = Select;
 
@@ -11,16 +11,16 @@ function AddApointments() {
 
     // state form field
     const [petName, setPetName] = useLocalStorage("petName", "");
-    const [owner, setOwner] = useState('');
-    const [datePicker, setDatePicker] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [email, setEmail] = useState('');
-
+    const [owner, setOwner] = useLocalStorage("owner", "");
+    const [datePicker, setDatePicker] = useLocalStorage("datePicker", "");
+    const [phoneNumber, setPhoneNumber] = useLocalStorage("phoneNumber", "");
+    const [email, setEmail] = useLocalStorage("email", "");
+    
     const [petType, setPetType] = useLocalStorage("petType", "");
-    const [breed, setBreed] = useState('');
-    const [gender, setGender] = useState('');
-    const [age, setAge] = useState('');
-    const [notes, setNotes] = useState('');
+    const [breed, setBreed] = useLocalStorage("breed", "");
+    const [gender, setGender] = useLocalStorage("gender", "");
+    const [age, setAge] = useLocalStorage("age", "");
+    const [notes, setNotes] = useLocalStorage("notes", "");
 
     
     // show form after clicking plus btn 
