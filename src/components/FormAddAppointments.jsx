@@ -1,22 +1,35 @@
-import React from 'react';
-import { Form, Input, Button, InputNumber } from 'antd';
+import React, { useState } from 'react';
+import { Card, Form, Input, Button, InputNumber, Alert, Select, DatePicker } from 'antd';
+import { CloseCircleFilled } from '@ant-design/icons';
+
+const { Option } = Select;
 
 function FormAddAppointments() {
 
+    // display alert that your appointment has been saved
+    const [save, setSave] = useState(false);
+    
     const layout = {
         labelCol: {
           span: 8,
         },
         wrapperCol: {
-          span: 16,
+          span: 8,
         },
       };
 
     return (
         <div className="edit-appt">
-         <Form {...layout} name="nest-messages">
+        <Card style={{marginTop: '30px'}}>    
+        <Card bordered={false}>
+        <CloseCircleFilled 
+           style={{color: '#f5222d', fontSize: '25px', float: 'right'}}  
+       
+        />
+        </Card>
+         <Form {...layout} name="nest-messages" style={{marginTop: '10px'}}>
           <Form.Item
-           name={['user', 'name']}
+           name={['pet name']}
            label="Pet's Name"
            rules={[
               {
@@ -27,11 +40,10 @@ function FormAddAppointments() {
          <Input />
          </Form.Item>
          <Form.Item
-          name={['user', 'email']}
+          name={['pet type']}
           label="Pet's Type"
           rules={[
             {
-            type: 'email',
             required: true
             },
           ]}
@@ -39,31 +51,36 @@ function FormAddAppointments() {
         <Input />
        </Form.Item>
        <Form.Item
-        name={['user', 'email']}
+        name={['breed']}
         label="Breed"
         rules={[
           {
-            type: 'email',
             required: true
           },
         ]}
         >
         <Input />
        </Form.Item>
+
        <Form.Item
-        name={['user', 'email']}
+        name="gender"
         label="Gender"
         rules={[
           {
-            type: 'email',
-            required: true
+            required: true,
+            message: 'Please select gender!',
           },
         ]}
-        >
-        <Input />
-        </Form.Item>
+      >
+        <Select placeholder="select your gender">
+          <Option value="male">Male</Option>
+          <Option value="female">Female</Option>
+          <Option value="other">Other</Option>
+        </Select>
+      </Form.Item>
+
         <Form.Item
-         name={['user', 'age']}
+         name={['age']}
          label="Age"
          rules={[
           {
@@ -76,18 +93,30 @@ function FormAddAppointments() {
         >
         <InputNumber />
         </Form.Item>
+
+        <Form.Item label="DatePicker">
+         <DatePicker 
+           name={['date']}
+           rules={[
+            {
+              required: true
+            },
+          ]}
+         />
+        </Form.Item>
+
         <Form.Item
-         name={['user', 'email']}
+         name={['user', 'name']}
          label="Owner"
          rules={[
           {
-            type: 'email',
             required: true
           },
          ]}
         >
         <Input />
         </Form.Item>
+
         <Form.Item
          name={['user', 'email']}
          label="Email"
@@ -100,27 +129,36 @@ function FormAddAppointments() {
         >
         <Input />
         </Form.Item>
+
         <Form.Item
-         name={['user', 'email']}
-         label="Phone number"
-         rules={[
+        name="phone"
+        label="Phone Number"
+        rules={[
           {
-            type: 'email',
-            required: true
+            required: true,
+            message: 'Please input your phone number!',
           },
         ]}
-        >
-        <Input />
-        </Form.Item>
+      >
+        <Input
+          //addonBefore={prefixSelector}
+          style={{
+            width: '100%',
+          }}
+        />
+      </Form.Item>
+
         <Form.Item name={['user', 'introduction']} label="Notes">
         <Input.TextArea />
         </Form.Item>
         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
+        <Button type="primary" htmlType="save">
+          Save
         </Button>
+        {save &&  <Alert message="The appointment has been saved" type="success" />}
         </Form.Item>
     </Form>
+    </Card>
    </div>
    )
 }
