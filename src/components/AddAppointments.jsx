@@ -3,42 +3,26 @@ import { Card, Form, Input, Button, InputNumber, Alert, Select, DatePicker } fro
 import { PlusCircleFilled } from '@ant-design/icons';
 import { CloseCircleFilled } from '@ant-design/icons';
 
+import { useLocalStorage } from '../useLocalStorage';
 
 const { Option } = Select;
 
 function AddApointments() {
 
     // state form field
-    const [petName, setPetName] = useState('');
+    const [petName, setPetName] = useLocalStorage("petName", "");
     const [owner, setOwner] = useState('');
     const [datePicker, setDatePicker] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
 
-    const [petType, setPetType] = useState('');
+    const [petType, setPetType] = useLocalStorage("petType", "");
     const [breed, setBreed] = useState('');
     const [gender, setGender] = useState('');
     const [age, setAge] = useState('');
     const [notes, setNotes] = useState('');
 
-    // storing data in LS
-    useEffect(() => {
-        localStorage.setItem("petName", JSON.stringify(petName));
-        localStorage.setItem("owner", JSON.stringify(owner));
-        localStorage.setItem("datePicker", JSON.stringify(datePicker));
-        localStorage.setItem("email", JSON.stringify(email));
-        localStorage.setItem("phoneNumber", JSON.stringify(phoneNumber));
-
-        localStorage.setItem("petType", JSON.stringify(petType));
-        localStorage.setItem("breed", JSON.stringify(breed));
-        localStorage.setItem("gender", JSON.stringify(gender));
-        localStorage.setItem("age", JSON.stringify(age));
-        localStorage.setItem("notes", JSON.stringify(notes));
-
-    }, [petName, owner, datePicker, email, phoneNumber, petType, breed, gender, age, notes])  
-
     
-
     // show form after clicking plus btn 
     const [ showForm, setShowForm ] = useState(false)
     const onClick = () => setShowForm(true);
@@ -155,7 +139,7 @@ function AddApointments() {
               </Form.Item>
 
                  <Form.Item
-                  value="petType"
+                  value={petType}
                   onChange={(e) => setPetType(e.target.value)}
                   name={['pet type']}
                   label="Pet's Type"
@@ -169,7 +153,7 @@ function AddApointments() {
                </Form.Item>
 
                <Form.Item
-                value="breed"
+                value={breed}
                 onChange={(e) => setBreed(e.target.value)}
                 name={['breed']}
                 label="Breed"
@@ -183,7 +167,7 @@ function AddApointments() {
                </Form.Item>
         
                <Form.Item
-                name="gender"
+                name={gender}
                 onChange={(e) => setGender(e.target.value)}
                 label="Gender"
                 rules={[
@@ -201,7 +185,7 @@ function AddApointments() {
               </Form.Item>
         
                 <Form.Item
-                 value="age"
+                 value={age}
                  onChange={(e) => setAge(e.target.value)}
                  name={['age']}
                  label="Age"
@@ -218,7 +202,7 @@ function AddApointments() {
                 </Form.Item>
         
                 <Form.Item 
-                value="notes"
+                value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 name={['user', 'introduction']} label="Notes">
                 <Input.TextArea />
