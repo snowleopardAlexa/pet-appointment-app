@@ -11,6 +11,11 @@ label {
   color: black;
 }
 
+.alert-required {
+  font-size: 0.8rem;
+  color: rgb(189, 4, 4);
+}
+
 .card-add-appt {
   background-color: #0808a3;
 }

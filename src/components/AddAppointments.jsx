@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import {Input, Card, CardBody, FormGroup, Label, Button, Form } from 'reactstrap';
+import React, { useEffect, useState } from 'react';
+import {Input, Card, CardBody, FormGroup, Label, Button, Form, Alert } from 'reactstrap';
 import { AiFillPlusCircle, AiFillCloseCircle,  } from 'react-icons/ai';
+import { objectExpression } from '@babel/types';
 
 function AddApointments() {
     // show form after clicking plus btn 
@@ -26,6 +27,49 @@ function AddApointments() {
         setFormValues({...formValues, [name]: value});
     };
    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setFormErrors(validate(formValues));
+        setIsSubmit(true);
+    };
+
+    useEffect(() => {
+        console.log(formErrors);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            console.log(formValues);
+        }
+    }, [formErrors]);
+
+    const validate = (values) => {
+        const errors = {};
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        if (!values.petName) {
+            errors.petName = "Pet Name is required";
+        }
+        if (!values.owner) {
+            errors.owner = "Owner is required"
+        }
+      
+        if (!values.date) {
+            errors.date = "Date is required"
+        }
+      
+        if (!values.time) {
+            errors.time= "Time is required"
+        }
+      
+        if (!values.phone) {
+            errors.phoneNumber = "Phone Number is required"
+        }
+        if (!values.email) {
+            errors.email = "Email is required";
+        } else if (!regex.test(values.email)) {
+            errors.email = "This is not a valid email format!"
+        }
+
+        return errors;
+    }
+
 
     // display alert that your appointment has been saved
     // const [save, setSave] = useState(false);
@@ -46,7 +90,7 @@ function AddApointments() {
               />
               </div>
               <CardBody>
-              <Form className="form-appt mx-auto">
+              <Form onSubmit={handleSubmit} className="form-appt mx-auto">
                <FormGroup>
                  <Label>Pet Name</Label>
                  <Input
@@ -57,7 +101,7 @@ function AddApointments() {
                   onChange={handleChange}
                  />
                </FormGroup>
-  
+               <p className="alert-required">{formErrors.petName}</p>
                <FormGroup>
                 <Label>Owner</Label>
                 <Input
@@ -68,7 +112,7 @@ function AddApointments() {
                   onChange={handleChange}
                 />
               </FormGroup>
-
+              <p className="alert-required">{formErrors.owner}</p>
               <FormGroup>
                 <Label>Date</Label>
                 <Input
@@ -79,7 +123,7 @@ function AddApointments() {
                   onChange={handleChange}
                 />
               </FormGroup>
-
+              <p className="alert-required">{formErrors.date}</p>
               <FormGroup>
                 <Label>Time</Label>
                 <Input
@@ -90,7 +134,7 @@ function AddApointments() {
                   onChange={handleChange}
                 />
               </FormGroup>
-
+              <p className="alert-required">{formErrors.time}</p>
               <FormGroup>
                 <Label>Phone Number</Label>
                 <Input
@@ -101,7 +145,7 @@ function AddApointments() {
                   onChange={handleChange}
                 />
               </FormGroup>
-
+              <p className="alert-required">{formErrors.phoneNumber}</p>
               <FormGroup>
                 <Label>Email</Label>
                 <Input
@@ -112,7 +156,7 @@ function AddApointments() {
                   onChange={handleChange}
                 />
               </FormGroup>
-
+              <p className="alert-required">{formErrors.email}</p>
               <FormGroup>
                 <Label>Gender</Label>
                 <Input
