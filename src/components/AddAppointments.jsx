@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {Input, Card, CardBody, FormGroup, Label, Button, Form } from 'reactstrap';
+import {Input, Card, CardBody, CardSubtitle, CardTitle, CardText , FormGroup, Label, Button, Form } from 'reactstrap';
 import { AiFillPlusCircle, AiFillCloseCircle,  } from 'react-icons/ai';
+import { FaTrashAlt } from 'react-icons/fa';
+import { BsFillPenFill } from 'react-icons/bs';
 
 function AddApointments() {
     // show form after clicking plus btn 
@@ -17,7 +19,9 @@ function AddApointments() {
     const [age, setAge] = useState([]);
     const [notes, setNotes] = useState([]);
 
-    const dataInputHandler = 
+    const addApptHandler = () => {
+        
+    };
 
     // form validation
     const initialValues = {
@@ -89,6 +93,7 @@ function AddApointments() {
 
   
     return (
+        <>
         <div>
            <Card className="card-add-appt mx-auto">
              <p className="card-title-add-appt">Add Appointment
@@ -222,6 +227,54 @@ function AddApointments() {
                : null} 
            </Card> 
         </div>
+    
+         <div className="list-appts">
+           <Card className="card-appt mx-auto">
+             <CardBody>
+                <CardTitle className="card-title-appt">Appointments</CardTitle>
+             </CardBody>
+           </Card>
+            <Card className="card-pet-appts mx-auto">
+            <div className="icons">  
+            <FaTrashAlt className="icon-trash" />
+            <BsFillPenFill className="icon-edit" />
+            </div>
+            <CardBody>
+             <Card className="card-pet-appt">
+               <CardBody>
+                 <CardTitle tag="h4" className="card-title-pet-name">
+                    Kion
+                 </CardTitle>
+                 <CardSubtitle tag="h5">
+                    Alexa Slomski
+                 </CardSubtitle>
+                 <CardText tag="h6">
+                     20/02/2022
+                 </CardText>
+                 <CardText tag="h6">
+                     12:30 am
+                 </CardText>
+                 <CardText tag="h6">
+                     768-098-0987
+                 </CardText>
+                 <CardText tag="h6">
+                     alexa@gmail.com
+                 </CardText>
+                 <CardText tag="h6">
+                     Male
+                 </CardText>
+                 <CardText tag="h6">
+                     1 yr
+                 </CardText>
+                 <CardText tag="h6">
+                     He's a wild kitty, be careful!
+                 </CardText>
+               </CardBody>
+             </Card>
+             </CardBody>
+             </Card>
+             </div>
+        </>
     )
 }
 

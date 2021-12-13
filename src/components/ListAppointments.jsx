@@ -14,8 +14,6 @@ function ListAppointments() {
                 <CardTitle className="card-title-appt">Appointments</CardTitle>
              </CardBody>
            </Card>
-      
-            {/*} {appts.map((appt) => (*/}
             <Card className="card-pet-appts mx-auto">
             <div className="icons">  
             <FaTrashAlt className="icon-trash" />

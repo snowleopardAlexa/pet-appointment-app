@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Card, CardBody, CardTitle } from 'reactstrap';
 import AddAppointments from './components/AddAppointments';
-import ListAppointments from './components/ListAppointments';
+//import ListAppointments from './components/ListAppointments';
 
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
       </Card>
       </div>
     <AddAppointments  />
-    <ListAppointments />
+
     </div>
   );
 }
