@@ -58,7 +58,7 @@ function AddApointments() {
             errors.time= "Time is required"
         }
       
-        if (!values.phone) {
+        if (!values.phoneNumber) {
             errors.phoneNumber = "Phone Number is required"
         }
         if (!values.email) {
@@ -90,6 +90,14 @@ function AddApointments() {
               />
               </div>
               <CardBody>
+              {Object.keys(formErrors).length === 0 && isSubmit ? (
+                  <p className="message-success">The appointment has been saved</p>
+              ) : (
+
+                  null
+                  {/*<p className="message-failed">Try again. You have NOT saved the appointment.</p>*/}
+              )}    
+
               <Form onSubmit={handleSubmit} className="form-appt mx-auto">
                <FormGroup>
                  <Label>Pet Name</Label>
@@ -139,7 +147,7 @@ function AddApointments() {
                 <Label>Phone Number</Label>
                 <Input
                   id="name"
-                  type="number"
+                  type="tel"
                   name="phoneNumber"
                   value={formValues.phoneNumber}
                   onChange={handleChange}

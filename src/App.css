@@ -16,6 +16,20 @@ label {
   color: rgb(189, 4, 4);
 }
 
+.message-success, .message-failed {
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.message-success {
+  color: #10a510;
+}
+
+.message-failed {
+  color: #a51010;
+}
+
 .card-add-appt {
   background-color: #0808a3;
 }
