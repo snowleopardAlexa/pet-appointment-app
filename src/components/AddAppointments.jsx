@@ -7,7 +7,7 @@ import { AiFillPlusCircle, AiFillCloseCircle,  } from "react-icons/ai";
 function AddApointments() {
     // show form after clicking plus btn 
     const [ showForm, setShowForm ] = useState(false)
-    const onClick = () => setShowForm(true);
+   
 
     // display alert that your appointment has been saved
     // const [save, setSave] = useState(false);
@@ -34,13 +34,14 @@ function AddApointments() {
              <p className="card-title-add-appt">Add Appointment
              <span>
              <AiFillPlusCircle className="icon-add-appt"
-               onClick={onClick}
+               onClick={() => setShowForm(true)}
              /></span>
              </p>
             {showForm ? 
             <Card style={{marginTop: '30px'}}>    
               <CardBody>
               <AiFillCloseCircle 
+                onClick={() => setShowForm(false)}
                 className="icon-close-appt"
               />
               <Form inline onSubmit={handleFillAppointmentForm}>
