@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import {Input, Card, CardBody, FormGroup, Label, Button, Form, Alert } from 'reactstrap';
+import {Input, Card, CardBody, FormGroup, Label, Button, Form } from 'reactstrap';
 import { AiFillPlusCircle, AiFillCloseCircle,  } from 'react-icons/ai';
-import { objectExpression } from '@babel/types';
 
 function AddApointments() {
     // show form after clicking plus btn 
     const [ showForm, setShowForm ] = useState(false);
+    // displaying data on the screen
+    const [appts, setAppts] = useState([]);
+    const [petName, setPetName] = useState([]);
+    const [owner, setOwner] = useState([]);
+    const [date, setDate] = useState([]);
+    const [time, setTime] = useState([]);
+    const [phoneNumber, setPhoneNumber] = useState([]);
+    const [email, setEmail] = useState([]);
+    const [gender, setGender] = useState([]);
+    const [age, setAge] = useState([]);
+    const [notes, setNotes] = useState([]);
 
+    // form validation
     const initialValues = {
         petName: "",
         owner: "",
@@ -93,9 +104,7 @@ function AddApointments() {
               {Object.keys(formErrors).length === 0 && isSubmit ? (
                   <p className="message-success">The appointment has been saved</p>
               ) : (
-
                   null
-                  {/*<p className="message-failed">Try again. You have NOT saved the appointment.</p>*/}
               )}    
 
               <Form onSubmit={handleSubmit} className="form-appt mx-auto">
