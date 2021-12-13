@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import {Input, Card, CardBody, FormGroup, Label, Button, Form } from 'reactstrap';
-import { AiFillCloseCircle, AiFillPlusCircle } from "react-icons/bs";
+import { AiFillPlusCircle, AiFillCloseCircle,  } from "react-icons/ai";
 //import { useLocalStorage } from "./useLocalStorage";
 
 
 function AddApointments() {
-
-        
     // show form after clicking plus btn 
     const [ showForm, setShowForm ] = useState(false)
     const onClick = () => setShowForm(true);
@@ -14,10 +12,10 @@ function AddApointments() {
     // display alert that your appointment has been saved
     // const [save, setSave] = useState(false);
 
-
       const [petName, setPetName] = useState("")
       const [breed, setBreed] = useState("")
 
+      // save data to LS
       const handleFillAppointmentForm = e => {
         e.preventDefault()
         try {
@@ -28,18 +26,23 @@ function AddApointments() {
         }
       }
 
+
+
     return (
         <div>
-           <Card>
-             <p style={{fontSize: '1.2rem'}}>Add Appointment</p>
-             <AiFillPlusCircle
-               style={{color: '#1890ff', fontSize: '30px'}} 
+           <Card className="card-add-appt mx-auto">
+             <p className="card-title-add-appt">Add Appointment
+             <span>
+             <AiFillPlusCircle className="icon-add-appt"
                onClick={onClick}
-             />
+             /></span>
+             </p>
             {showForm ? 
             <Card style={{marginTop: '30px'}}>    
               <CardBody>
-              <AiFillCloseCircle style={{color: '#f5222d', fontSize: '25px', float: 'right'}}  />
+              <AiFillCloseCircle 
+                className="icon-close-appt"
+              />
               <Form inline onSubmit={handleFillAppointmentForm}>
                <FormGroup>
                  <Label for="exampleEmail" hidden></Label>
@@ -62,7 +65,7 @@ function AddApointments() {
                  onChange={e => setBreed(e.target.value)}
                 />
               </FormGroup>
-             <Button>Submit</Button>
+             <Button className="btn-appt">Save Appointment</Button>
              </Form>
               </CardBody>       
             </Card>

@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="pet-appt">
       <div>
-      <Card>
+      <Card className="hero mx-auto">
        <CardBody>
          <CardTitle tag="h4" className="text-center">
           Pet Appointment App
