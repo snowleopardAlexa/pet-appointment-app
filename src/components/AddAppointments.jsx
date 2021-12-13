@@ -2,33 +2,35 @@ import React, { useState } from 'react';
 import {Input, Card, CardBody, FormGroup, Label, Button, Form } from 'reactstrap';
 import { AiFillPlusCircle, AiFillCloseCircle,  } from 'react-icons/ai';
 
-//import { useLocalStorage } from "./useLocalStorage";
-
-
 function AddApointments() {
     // show form after clicking plus btn 
-    const [ showForm, setShowForm ] = useState(false)
+    const [ showForm, setShowForm ] = useState(false);
+
+    const initialValues = {
+        petName: "",
+        owner: "",
+        date: "",
+        time: "",
+        phoneNumber: "",
+        email: "",
+        gender: "",
+        age: "",
+        notes: ""
+    };
+    const [formValues, setFormValues] = useState(initialValues);
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormValues({...formValues, [name]: value});
+    };
    
 
     // display alert that your appointment has been saved
     // const [save, setSave] = useState(false);
 
-      const [petName, setPetName] = useState("")
-      const [breed, setBreed] = useState("")
-
-      // save data to LS
-      const handleFillAppointmentForm = e => {
-        e.preventDefault()
-        try {
-          window.localStorage.setItem("petName", JSON.stringify({ petName }))
-          window.localStorage.setItem("breed", JSON.stringify({ breed }))
-        } catch (error) {
-          console.log(error)
-        }
-      }
-
-
-
+  
     return (
         <div>
            <Card className="card-add-appt mx-auto">
@@ -50,6 +52,9 @@ function AddApointments() {
                  <Input
                   id="name"
                   type="text"
+                  name="petName"
+                  value={formValues.petName}
+                  onChange={handleChange}
                  />
                </FormGroup>
   
@@ -58,6 +63,9 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="text"
+                  name="owner"
+                  value={formValues.owner}
+                  onChange={handleChange}
                 />
               </FormGroup>
 
@@ -66,6 +74,9 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="date"
+                  name="date"
+                  value={formValues.date}
+                  onChange={handleChange}
                 />
               </FormGroup>
 
@@ -74,6 +85,9 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="time"
+                  name="time"
+                  value={formValues.time}
+                  onChange={handleChange}
                 />
               </FormGroup>
 
@@ -82,6 +96,9 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="number"
+                  name="phoneNumber"
+                  value={formValues.phoneNumber}
+                  onChange={handleChange}
                 />
               </FormGroup>
 
@@ -90,6 +107,9 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="email"
+                  name="email"
+                  value={formValues.email}
+                  onChange={handleChange}
                 />
               </FormGroup>
 
@@ -98,6 +118,9 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="text"
+                  name="gender"
+                  value={formValues.gender}
+                  onChange={handleChange}
                 />
               </FormGroup>
 
@@ -106,6 +129,9 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="number"
+                  name="age"
+                  value={formValues.age}
+                  onChange={handleChange}
                 />
               </FormGroup>
 
@@ -114,6 +140,9 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="text"
+                  name="notes"
+                  value={formValues.notes}
+                  onChange={handleChange}
                 />
               </FormGroup>
 
