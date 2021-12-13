@@ -33,26 +33,23 @@ function AddApointments() {
         <div>
            <Card className="card-add-appt mx-auto">
              <p className="card-title-add-appt">Add Appointment
-             <span>
-             <AiFillPlusCircle className="icon-add-appt"
-               onClick={() => setShowForm(true)}
-             /></span>
+             <AiFillPlusCircle className="icon-add-appt" onClick={() => setShowForm(true)} />
              </p>
             {showForm ? 
-            <Card style={{marginTop: '30px'}}>    
-              <CardBody>
-              <AiFillCloseCircle 
+            <Card>    
+            <div className="icon-close">
+             <AiFillCloseCircle 
                 onClick={() => setShowForm(false)}
                 className="icon-close-appt"
               />
-              <Form>
+              </div>
+              <CardBody>
+              <Form className="form-appt mx-auto">
                <FormGroup>
                  <Label>Pet Name</Label>
                  <Input
                   id="name"
                   type="text"
-                  value={petName}
-                  onChange={e => setPetName(e.target.value)}
                  />
                </FormGroup>
   
@@ -61,8 +58,6 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="text"
-                  value={breed}
-                  onChange={e => setBreed(e.target.value)}
                 />
               </FormGroup>
 
@@ -71,8 +66,6 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="date"
-                  value={breed}
-                  onChange={e => setBreed(e.target.value)}
                 />
               </FormGroup>
 
@@ -81,8 +74,6 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="time"
-                  value={breed}
-                  onChange={e => setBreed(e.target.value)}
                 />
               </FormGroup>
 
@@ -91,8 +82,6 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="number"
-                  value={breed}
-                  onChange={e => setBreed(e.target.value)}
                 />
               </FormGroup>
 
@@ -101,8 +90,6 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="email"
-                  value={breed}
-                  onChange={e => setBreed(e.target.value)}
                 />
               </FormGroup>
 
@@ -111,8 +98,6 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="text"
-                  value={breed}
-                  onChange={e => setBreed(e.target.value)}
                 />
               </FormGroup>
 
@@ -121,8 +106,6 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="number"
-                  value={breed}
-                  onChange={e => setBreed(e.target.value)}
                 />
               </FormGroup>
 
@@ -131,12 +114,10 @@ function AddApointments() {
                 <Input
                   id="name"
                   type="text"
-                  value={breed}
-                  onChange={e => setBreed(e.target.value)}
                 />
               </FormGroup>
 
-             <Button className="btn-appt">Save Appointment</Button>
+             <Button className="btn-appt mx-auto d-block">Save Appointment</Button>
              </Form>
               </CardBody>       
             </Card>
