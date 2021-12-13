@@ -17,6 +17,8 @@ function AddApointments() {
     const [age, setAge] = useState([]);
     const [notes, setNotes] = useState([]);
 
+    const dataInputHandler = 
+
     // form validation
     const initialValues = {
         petName: "",
@@ -116,6 +118,8 @@ function AddApointments() {
                   name="petName"
                   value={formValues.petName}
                   onChange={handleChange}
+                  value={petName}
+                  onChange={(e) => setPetName(e.target.value)}
                  />
                </FormGroup>
                <p className="alert-required">{formErrors.petName}</p>
@@ -207,7 +211,11 @@ function AddApointments() {
                 />
               </FormGroup>
 
-             <Button className="btn-appt mx-auto d-block">Save Appointment</Button>
+             <Button 
+               onClick={addApptHandler} className="btn-appt mx-auto d-block"
+             >Save Appointment
+            </Button>
+
              </Form>
               </CardBody>       
             </Card>
