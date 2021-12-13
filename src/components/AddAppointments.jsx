@@ -14,13 +14,33 @@ function AddApointments() {
     const [date, setDate] = useState([]);
     const [time, setTime] = useState([]);
     const [phoneNumber, setPhoneNumber] = useState([]);
+    const [petType, setPetType] = useState([]);
+    const [breed, setBreed] = useState([]);
     const [email, setEmail] = useState([]);
     const [gender, setGender] = useState([]);
     const [age, setAge] = useState([]);
     const [notes, setNotes] = useState([]);
 
     const addApptHandler = () => {
-        
+        const oldAppts = [...appts];
+        const newAppts = {
+            petName,
+            owner,
+            date,
+            time,
+            phoneNumber,
+            email,
+            petType,
+            breed,
+            gender,
+            age,
+            notes,
+            id:Math.floor(Math.random()*1000)
+        }
+
+        const newAppts = oldAppts.concat(newAppt);
+
+        setAppts(newAppts);
     };
 
     // form validation
@@ -30,6 +50,8 @@ function AddApointments() {
         date: "",
         time: "",
         phoneNumber: "",
+        petType: "",
+        breed: "",
         email: "",
         gender: "",
         age: "",
@@ -78,11 +100,16 @@ function AddApointments() {
         if (!values.phoneNumber) {
             errors.phoneNumber = "Phone Number is required"
         }
+
         if (!values.email) {
             errors.email = "Email is required";
         } else if (!regex.test(values.email)) {
             errors.email = "This is not a valid email format!"
         }
+
+        if (!values.petType) {
+            errors.petType = "Pet Type is required";
+        } 
 
         return errors;
     }
@@ -184,6 +211,28 @@ function AddApointments() {
               </FormGroup>
               <p className="alert-required">{formErrors.email}</p>
               <FormGroup>
+                <Label>Pet Type</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  name="petType"
+                  value={formValues.email}
+                  onChange={handleChange}
+                />
+              </FormGroup>
+              <p className="alert-required">{formErrors.petType}</p>
+              <FormGroup>
+                <Label>Breed</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  name="breed"
+                  value={formValues.breed}
+                  onChange={handleChange}
+                />
+              </FormGroup>
+
+              <FormGroup>
                 <Label>Gender</Label>
                 <Input
                   id="name"
@@ -234,6 +283,9 @@ function AddApointments() {
                 <CardTitle className="card-title-appt">Appointments</CardTitle>
              </CardBody>
            </Card>
+
+           {appts.map((appt, id) => (
+
             <Card className="card-pet-appts mx-auto">
             <div className="icons">  
             <FaTrashAlt className="icon-trash" />
@@ -243,36 +295,45 @@ function AddApointments() {
              <Card className="card-pet-appt">
                <CardBody>
                  <CardTitle tag="h4" className="card-title-pet-name">
-                    Kion
+                    {appt.petName}
                  </CardTitle>
                  <CardSubtitle tag="h5">
-                    Alexa Slomski
+                    {appt.owner}
                  </CardSubtitle>
                  <CardText tag="h6">
-                     20/02/2022
+                    {appt.date}
                  </CardText>
                  <CardText tag="h6">
-                     12:30 am
+                    {appt.time}
                  </CardText>
                  <CardText tag="h6">
-                     768-098-0987
+                    {appt.phoneNumber}
                  </CardText>
                  <CardText tag="h6">
-                     alexa@gmail.com
+                    {appt.email}
                  </CardText>
                  <CardText tag="h6">
-                     Male
+                    {appt.petType}
                  </CardText>
                  <CardText tag="h6">
-                     1 yr
+                    {appt.breed}
                  </CardText>
                  <CardText tag="h6">
-                     He's a wild kitty, be careful!
+                    {appt.gender}
+                 </CardText>
+                 <CardText tag="h6">
+                    {appt.age}
+                 </CardText>
+                 <CardText tag="h6">
+                    {appt.notes}
                  </CardText>
                </CardBody>
              </Card>
              </CardBody>
              </Card>
+
+             ))}
+
              </div>
         </>
     )
