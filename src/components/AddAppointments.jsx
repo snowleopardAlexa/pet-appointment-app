@@ -45,28 +45,97 @@ function AddApointments() {
                 onClick={() => setShowForm(false)}
                 className="icon-close-appt"
               />
-              <Form inline onSubmit={handleFillAppointmentForm}>
+              <Form>
                <FormGroup>
-                 <Label for="exampleEmail" hidden></Label>
+                 <Label>Pet Name</Label>
                  <Input
                   id="name"
-                  placeholder="Pet Name"
-                  type="Name"
+                  type="text"
                   value={petName}
                   onChange={e => setPetName(e.target.value)}
                  />
                </FormGroup>
   
                <FormGroup>
-                <Label for="examplePassword" hidden></Label>
+                <Label>Owner</Label>
                 <Input
-                 id="breed"
-                 placeholder="breed"
-                 type="breed"
-                 value={breed}
-                 onChange={e => setBreed(e.target.value)}
+                  id="name"
+                  type="text"
+                  value={breed}
+                  onChange={e => setBreed(e.target.value)}
                 />
               </FormGroup>
+
+              <FormGroup>
+                <Label>Date</Label>
+                <Input
+                  id="name"
+                  type="date"
+                  value={breed}
+                  onChange={e => setBreed(e.target.value)}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Label>Time</Label>
+                <Input
+                  id="name"
+                  type="time"
+                  value={breed}
+                  onChange={e => setBreed(e.target.value)}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Label>Phone Number</Label>
+                <Input
+                  id="name"
+                  type="number"
+                  value={breed}
+                  onChange={e => setBreed(e.target.value)}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Label>Email</Label>
+                <Input
+                  id="name"
+                  type="email"
+                  value={breed}
+                  onChange={e => setBreed(e.target.value)}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Label>Gender</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  value={breed}
+                  onChange={e => setBreed(e.target.value)}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Label>Age</Label>
+                <Input
+                  id="name"
+                  type="number"
+                  value={breed}
+                  onChange={e => setBreed(e.target.value)}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Label>Notes</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  value={breed}
+                  onChange={e => setBreed(e.target.value)}
+                />
+              </FormGroup>
+
              <Button className="btn-appt">Save Appointment</Button>
              </Form>
               </CardBody>       
