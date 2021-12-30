@@ -1,23 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Card, CardBody, CardSubtitle, CardTitle, CardText } from 'reactstrap';
 import { FaTrashAlt } from 'react-icons/fa';
 import { BsFillPenFill } from 'react-icons/bs';
 
-function ListAppointments() {
-
-      // displaying data on the screen
-      const [appts, setAppts] = useState([]);
-      const [petName, setPetName] = useState([]);
-      const [owner, setOwner] = useState([]);
-      const [date, setDate] = useState([]);
-      const [time, setTime] = useState([]);
-      const [phoneNumber, setPhoneNumber] = useState([]);
-      const [petType, setPetType] = useState([]);
-      const [breed, setBreed] = useState([]);
-      const [email, setEmail] = useState([]);
-      const [gender, setGender] = useState([]);
-      const [age, setAge] = useState([]);
-      const [notes, setNotes] = useState([]);
+function ListAppointments({ appointments }) {
 
     return (
       <div className="list-appts">
@@ -27,9 +13,9 @@ function ListAppointments() {
         </CardBody>
       </Card>
 
-      {appts.map((appt, id) => (
+      {appointments.map(({ id, petName, owner, date, time, phoneNumber, email, petType, breed, gender, age, notes}) => (
 
-       <Card className="card-pet-appts mx-auto">
+       <Card key={id} className="card-pet-appts mx-auto">
        <div className="icons">  
        <FaTrashAlt className="icon-trash" />
        <BsFillPenFill className="icon-edit" />
@@ -38,37 +24,37 @@ function ListAppointments() {
         <Card className="card-pet-appt">
           <CardBody>
             <CardTitle tag="h4" className="card-title-pet-name">
-               {appt.petName}
+               {petName}
             </CardTitle>
             <CardSubtitle tag="h5">
-               {appt.owner}
+               {owner}
             </CardSubtitle>
             <CardText tag="h6">
-               {appt.date}
+               {date}
             </CardText>
             <CardText tag="h6">
-               {appt.time}
+               {time}
             </CardText>
             <CardText tag="h6">
-               {appt.phoneNumber}
+               {phoneNumber}
             </CardText>
             <CardText tag="h6">
-               {appt.email}
+               {email}
             </CardText>
             <CardText tag="h6">
-               {appt.petType}
+               {petType}
             </CardText>
             <CardText tag="h6">
-               {appt.breed}
+               {breed}
             </CardText>
             <CardText tag="h6">
-               {appt.gender}
+               {gender}
             </CardText>
             <CardText tag="h6">
-               {appt.age}
+               {age}
             </CardText>
             <CardText tag="h6">
-               {appt.notes}
+               {notes}
             </CardText>
           </CardBody>
         </Card>
