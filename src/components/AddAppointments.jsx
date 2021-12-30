@@ -1,47 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import {Input, Card, CardBody, CardSubtitle, CardTitle, CardText , FormGroup, Label, Button, Form } from 'reactstrap';
+import {Input, Card, CardBody , FormGroup, Label, Button, Form } from 'reactstrap';
 import { AiFillPlusCircle, AiFillCloseCircle,  } from 'react-icons/ai';
-import { FaTrashAlt } from 'react-icons/fa';
-import { BsFillPenFill } from 'react-icons/bs';
+//import { FaTrashAlt } from 'react-icons/fa';
+//import { BsFillPenFill } from 'react-icons/bs';
+import ListAppointments from './ListAppointments';
 
-function AddApointments() {
+function AddApointments(petName, owner) {
     // show form after clicking plus btn 
     const [ showForm, setShowForm ] = useState(false);
-    // displaying data on the screen
-    const [appts, setAppts] = useState([]);
-    const [petName, setPetName] = useState([]);
-    const [owner, setOwner] = useState([]);
-    const [date, setDate] = useState([]);
-    const [time, setTime] = useState([]);
-    const [phoneNumber, setPhoneNumber] = useState([]);
-    const [petType, setPetType] = useState([]);
-    const [breed, setBreed] = useState([]);
-    const [email, setEmail] = useState([]);
-    const [gender, setGender] = useState([]);
-    const [age, setAge] = useState([]);
-    const [notes, setNotes] = useState([]);
-
-    const addApptHandler = () => {
-        const oldAppts = [...appts];
-        const newAppts = {
-            petName,
-            owner,
-            date,
-            time,
-            phoneNumber,
-            email,
-            petType,
-            breed,
-            gender,
-            age,
-            notes,
-            id:Math.floor(Math.random()*1000)
-        }
-
-        const newAppts = oldAppts.concat(newAppt);
-
-        setAppts(newAppts);
-    };
 
     // form validation
     const initialValues = {
@@ -114,13 +80,34 @@ function AddApointments() {
         return errors;
     }
 
+    const addApptHandler = () => {
+        const oldAppts = [...appts];
+        const newAppt = {
+            petName,
+            owner,
+            date,
+            time,
+            phoneNumber,
+            email,
+            petType,
+            breed,
+            gender,
+            age,
+            notes,
+            id:Math.floor(Math.random()*1000)
+        }
+
+        const newAppts = oldAppts.concat(newAppt);
+
+
+        setAppts(newAppts);
+    };
+
 
     // display alert that your appointment has been saved
     // const [save, setSave] = useState(false);
 
-  
     return (
-        <>
         <div>
            <Card className="card-add-appt mx-auto">
              <p className="card-title-add-appt">Add Appointment
@@ -150,8 +137,6 @@ function AddApointments() {
                   name="petName"
                   value={formValues.petName}
                   onChange={handleChange}
-                  value={petName}
-                  onChange={(e) => setPetName(e.target.value)}
                  />
                </FormGroup>
                <p className="alert-required">{formErrors.petName}</p>
@@ -265,9 +250,8 @@ function AddApointments() {
                 />
               </FormGroup>
 
-             <Button 
-               onClick={addApptHandler} className="btn-appt mx-auto d-block"
-             >Save Appointment
+             <Button onClick={addApptHandler} className="btn-appt mx-auto d-block"
+             > Save Appointment
             </Button>
 
              </Form>
@@ -275,67 +259,14 @@ function AddApointments() {
             </Card>
                : null} 
            </Card> 
+           <ListAppointments 
+             petName={petName}
+             owner={owner}
+             setAppts
+             appts
+             
+           />
         </div>
-    
-         <div className="list-appts">
-           <Card className="card-appt mx-auto">
-             <CardBody>
-                <CardTitle className="card-title-appt">Appointments</CardTitle>
-             </CardBody>
-           </Card>
-
-           {appts.map((appt, id) => (
-
-            <Card className="card-pet-appts mx-auto">
-            <div className="icons">  
-            <FaTrashAlt className="icon-trash" />
-            <BsFillPenFill className="icon-edit" />
-            </div>
-            <CardBody>
-             <Card className="card-pet-appt">
-               <CardBody>
-                 <CardTitle tag="h4" className="card-title-pet-name">
-                    {appt.petName}
-                 </CardTitle>
-                 <CardSubtitle tag="h5">
-                    {appt.owner}
-                 </CardSubtitle>
-                 <CardText tag="h6">
-                    {appt.date}
-                 </CardText>
-                 <CardText tag="h6">
-                    {appt.time}
-                 </CardText>
-                 <CardText tag="h6">
-                    {appt.phoneNumber}
-                 </CardText>
-                 <CardText tag="h6">
-                    {appt.email}
-                 </CardText>
-                 <CardText tag="h6">
-                    {appt.petType}
-                 </CardText>
-                 <CardText tag="h6">
-                    {appt.breed}
-                 </CardText>
-                 <CardText tag="h6">
-                    {appt.gender}
-                 </CardText>
-                 <CardText tag="h6">
-                    {appt.age}
-                 </CardText>
-                 <CardText tag="h6">
-                    {appt.notes}
-                 </CardText>
-               </CardBody>
-             </Card>
-             </CardBody>
-             </Card>
-
-             ))}
-
-             </div>
-        </>
     )
 }
 
