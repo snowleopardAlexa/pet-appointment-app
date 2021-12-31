@@ -133,10 +133,27 @@ const formProperties = [
   {
     label: "Pet Type",
     name: "petType",
-    type: "text"
+    type: "text",
   },
   {
-
+    label: "Breed",
+    name: "breed",
+    type: "text",
+  },
+  {
+    label: "Gender",
+    name: "gender",
+    type: "text",
+  },
+  {
+    label: "Age",
+    name: "age",
+    type: "number",
+  },
+  {
+    label: "Notes",
+    name: "notes",
+    type: "text",
   }
 ];
 
@@ -184,53 +201,6 @@ function AddAppointmentForm({ setAppointments, formProps }) {
           formValues={formValues}
         />
       ))}
- 
-   
-      <p className="alert-required">{formErrors.petType}</p>
-      <FormGroup>
-        <Label>Breed</Label>
-        <Input
-          id="name"
-          type="text"
-          name="breed"
-          value={formValues.breed}
-          onChange={handleChange}
-        />
-      </FormGroup>
-
-      <FormGroup>
-        <Label>Gender</Label>
-        <Input
-          id="name"
-          type="text"
-          name="gender"
-          value={formValues.gender}
-          onChange={handleChange}
-        />
-      </FormGroup>
-
-      <FormGroup>
-        <Label>Age</Label>
-        <Input
-          id="name"
-          type="number"
-          name="age"
-          value={formValues.age}
-          onChange={handleChange}
-        />
-      </FormGroup>
-
-      <FormGroup>
-        <Label>Notes</Label>
-        <Input
-          id="name"
-          type="text"
-          name="notes"
-          value={formValues.notes}
-          onChange={handleChange}
-        />
-      </FormGroup>
-
       <Button onClick={handleSubmit} className="btn-appt mx-auto d-block">
         {" "}
         Save Appointment
@@ -240,7 +210,7 @@ function AddAppointmentForm({ setAppointments, formProps }) {
   );
 }
 
-function AddAppointments({ setAppointments, petName, owner }) {
+function AddAppointments({ setAppointments }) {
   // show form after clicking plus btn
   const [showForm, setShowForm] = useState(false);
 
