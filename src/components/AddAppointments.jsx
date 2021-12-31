@@ -9,9 +9,7 @@ import {
   Form,
 } from "reactstrap";
 import { AiFillPlusCircle, AiFillCloseCircle } from "react-icons/ai";
-//import { FaTrashAlt } from 'react-icons/fa';
-//import { BsFillPenFill } from 'react-icons/bs';
-import ListAppointments from "./ListAppointments";
+//import ListAppointments from "./ListAppointments";
 
 const initialValues = {
   petName: "",
@@ -127,6 +125,19 @@ const formProperties = [
     name: "phoneNumber",
     type: "tel",
   },
+  {
+    label: "Email",
+    name: "email",
+    type: "email",
+  },
+  {
+    label: "Pet Type",
+    name: "petType",
+    type: "text"
+  },
+  {
+
+  }
 ];
 
 function FormInput({
@@ -173,27 +184,8 @@ function AddAppointmentForm({ setAppointments, formProps }) {
           formValues={formValues}
         />
       ))}
-      <FormGroup>
-        <Label>Email</Label>
-        <Input
-          id="name"
-          type="email"
-          name="email"
-          value={formValues.email}
-          onChange={handleChange}
-        />
-      </FormGroup>
-      <p className="alert-required">{formErrors.email}</p>
-      <FormGroup>
-        <Label>Pet Type</Label>
-        <Input
-          id="name"
-          type="text"
-          name="petType"
-          value={formValues.petType}
-          onChange={handleChange}
-        />
-      </FormGroup>
+ 
+   
       <p className="alert-required">{formErrors.petType}</p>
       <FormGroup>
         <Label>Breed</Label>
