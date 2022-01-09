@@ -1,22 +1,16 @@
-// extracting the localStorage logic
-import { useState, useEffect } from "react";
 
-function getStorageValue(key, defaultValue) {
-  // getting stored value
-  const saved = localStorage.getItem(key);
-  const initial = JSON.parse(saved);
-  return initial || defaultValue;
+const editAppointmentAction = (state, payload) => {
+  // state.find(appointment => appointment.id === payload.id)
+  // find appointment being edited by appointment id
+  // remove the appointment being edited from the state
+  // add a new appointment with the edited details back to the state
+  // return the state with the edited appointment
+  return state;
 }
 
-export const useLocalStorage = (key, defaultValue) => {
-  const [value, setValue] = useState(() => {
-    return getStorageValue(key, defaultValue);
-  });
-
-  useEffect(() => {
-    // storing input name
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
-
-  return [value, setValue];
-};
+const removeAppointmentAction = (state, payload) => {
+  // find the appointment being deleted by appointment id
+  // remove the appointment from the state
+  // return the state without the removed appointment
+  return state;
+}
