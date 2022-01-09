@@ -2,18 +2,81 @@
   font-size: 2rem;
 }
 
-.hero, .card-add-appt {
+.hero {
   background-color: #000080;
+  height: 61px;
+}
+
+label {
+  color: black;
+}
+
+.alert-required {
+  font-size: 0.8rem;
+  color: rgb(189, 4, 4);
+}
+
+.message-success, .message-failed {
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.message-success {
+  color: #10a510;
+}
+
+.message-failed {
+  color: #a51010;
+}
+
+.card-add-appt {
+  background-color: #0808a3;
+}
+
+.card-appt {
+  background-color: #08679e;
+}
+
+.hero, .card-add-appt, .card-appt {
   color: #fff;
   border-radius: 5px;
-  width: 80%;
+  width: 60%;
   margin: 20px 20px;
   border: 1px solid rgb(223, 217, 217);
+}
+
+.card-pet-appts {
+  width: 60%;
+  border: 1px solid #0c3574;
+  margin-bottom: 20px;
+}
+
+.card-pet-appt {
+  background-color: #0c3574;
+  color: white;
+  border: none;
+}
+
+.icons {
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
+.icon-trash, .icon-edit {
+  color: #0c3574;
+  font-size: 20px;
+  float: right;
+}
+
+.appts-list {
+  border: transparent;
 }
 
 .card-title-add-appt {
   font-size: 1.2rem;
   margin: 15px 0px 10px 20px;
+  height: 32px;
 }
 
 .icon-add-appt {
@@ -27,7 +90,12 @@
   color: #000080;
   font-size: 30px;
   float: right;
-  margin-bottom: 20px;
+  margin-top: 5px;
+  margin-right: 12px;
+}
+
+.form-appt {
+  width: 70%;
 }
 
 .btn-appt {
@@ -36,4 +104,25 @@
   color: #f8f2f2
 }
 
+.card-title-appt {
+  text-align: center;
+  font-size: 1.2rem;
+  height: 22px;
+  color: #f8f2f2;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 812px) and (min-width: 375px) {
+  .hero, .card-add-appt, .card-appt {
+    width: 90%;
+  }
+
+  .card-pet-appts {
+    width: 90%;  
+  }
+
+  .card-title-add-appt {
+    font-size: 1rem;
+  }
+}
 
