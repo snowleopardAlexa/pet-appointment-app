@@ -69,6 +69,13 @@ function App() {
     <div className="pet-appt">
       <div>
       <Card className="hero mx-auto">
+       <CardBody style={{backgroundColor: '#A30000'}}>
+         <CardTitle tag="h6" className="text-center">
+          This app is in a progress: edit and delete functions do not work for now. 
+         </CardTitle>
+       </CardBody>
+      </Card>
+      <Card className="hero mx-auto">
        <CardBody>
          <CardTitle tag="h4" className="text-center">
           Pet Appointment App
@@ -82,7 +89,6 @@ function App() {
     {/* list appointments displays the list of appointments */}
     <ListAppointments 
        appointments={appointments} 
-       
     />
     </div>
   );
