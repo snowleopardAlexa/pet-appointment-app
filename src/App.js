@@ -1,8 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import './App.css';
 import { Card, CardBody, CardTitle } from 'reactstrap';
-// these two components share state, this is why we need to lift the state up to their parent component 
-// which is App.js
+// these two components share state, this is why we need to lift the state up to their parent component - App.js
 import AddAppointments from './components/AddAppointments';
 import ListAppointments from './components/ListAppointments';
 
