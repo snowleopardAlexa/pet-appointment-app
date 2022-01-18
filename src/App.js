@@ -43,7 +43,9 @@ const useAppointmentsReducer = (state, action) => {
     case 'edit':
        return editAppointmentAction(state, action.payload);
     case 'remove':
-       return removeAppointmentAction(state, action.payload);     
+       return removeAppointmentAction(state, action.payload); 
+    default:
+      // do nothing
   }
 };
 
