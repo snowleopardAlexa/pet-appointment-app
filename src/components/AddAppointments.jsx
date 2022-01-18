@@ -70,7 +70,7 @@ const useAddAppointmentForm = (setAppointments) => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
     }
-  }, [formErrors]);
+  }, [formErrors, formValues, isSubmit]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
